@@ -9,17 +9,17 @@ fetch("https://apidojo-yahoo-finance-v1.p.rapidapi.com/market/get-quotes?region=
     .then(data => {
         console.log(data);
         for (let i = 0; i < data['quoteResponse']['result'].length; i++){
-            /*let ul = document.getElementById("ticker")
-            let li = document.createElement("list")
-
-            li.appendChild(document.createTextNode(data['quoteResponse']['result'][''+i+'']['shortName']));
-            ul.appendChild(li); */
-            var text;
-            text += "<li>"+data['quoteResponse']['result'][''+i+'']['shortName']+"</li>";
-
+            var ticker;
+            var last;
+            var change;
+            ticker += "<li>"+data['quoteResponse']['result'][''+i+'']['shortName']+"</li>";
+            last += "<li>"+data['quoteResponse']['result'][''+i+'']['regularMarketPrice']+"</li>"
+            change += "<li>"+data['quoteResponse']['result'][''+i+'']['regularMarketChangePercent']+"</li>"
+            change = change.slice(0, -11)
 
         }
-        document.getElementById("ticker").innerHTML=text;
-
+        document.getElementById("ticker").innerHTML=ticker
+        document.getElementById("last").innerHTML=last;
+        document.getElementById("+/-%").innerHTML=change;
 
     })
