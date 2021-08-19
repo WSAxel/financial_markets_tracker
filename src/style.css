@@ -12,7 +12,14 @@
 #objectInfo{
     margin-left: 10%;
 }
-#graph{
-    width: 720px;
-    height: 420px;
+.headerMini{
+    float: left;
+    padding: 5px;
+}
+.header{
+    padding-bottom: 5%;
+}
+#logo{
+    width: 50px;
+    height: 50px;
 }

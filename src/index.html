@@ -4,12 +4,16 @@
     <meta charset="UTF-8">
     <title>Title</title>
     <link rel="stylesheet" href="style.css">
-    <script src="https://cdn.plot.ly/plotly-2.3.1.min.js"></script>
 </head>
 <body>
-<div>
-    <input type="text" placeholder="Search for stocks">
-    <button>Search</button>
+<div class="header">
+    <img id="logo" class="headerMini" src="data:image/png;base64,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">
+    <p id="s&p500" class="headerMini"> SP 500</p>
+    <p id="nasdaq" class="headerMini"> DOW JONES </p>
+    <p id="dowJones" class="headerMini"> SP 500 </p>
+    <p id="dax" class="headerMini"> NIKKEI </p>
+    <p id="osebx" class="headerMini"> OSEBX </p>
+    <p id="nikkei" class="headerMini"> NIKKEI </p>
 </div>
 <h1>Market Summary</h1>
 <div id="objectInfo">
@@ -26,7 +30,6 @@
     </div>
 
 </div>
-<div id="graph"></div>
-<script src="app.js"></script>
-</body>
-</html>
+    <script src="app.js"></script>
+    </body>
+    </html>
