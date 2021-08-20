@@ -14,12 +14,33 @@
 }
 .headerMini{
     float: left;
+    padding-right: 50px;
+    border-width: 1px;
+    border-style: solid;
+}
+.headermain{
+    margin-bottom: -10px;
+    color: white;
+    font-size: 20px;
+}
+.headerMinisuper{
+    float: left;
     padding: 5px;
+    color: white;
+    font-family: Tahoma sans-serif;
+    font-size: 17px;
 }
 .header{
     padding-bottom: 5%;
+    background-color: darkblue;
 }
 #logo{
     width: 50px;
     height: 50px;
+}
+.negative{
+    color: red;
+}
+.positive{
+    color: green;
 }
