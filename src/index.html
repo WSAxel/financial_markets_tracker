@@ -3,6 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <title>Title</title>
+    <script src=" https://ajax.googleapis.com/ajax/libs/jquery/1.5.2/jquery.min.js"></script>
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
@@ -14,6 +15,42 @@
     <div class="headerMini"><p id="dax" class="headermain"> NIKKEI </p><p id="daxchange" class="headerMinisuper"> +5.7</p><p id="daxprice" class="headerMinisuper"> 1000 </p></div>
     <div class="headerMini"><p id="osebx" class="headermain"> OSEBX </p><p id="osebxchange" class="headerMinisuper"> +5.70</p><p id="osebxprice" class="headerMinisuper"> 1000 </p></div>
     <div class="headerMini"><p id="nikkei" class="headermain"> NIKKEI </p><p id="nikkeichange" class="headerMinisuper"> +5.7</p><p id="nikkeiprice" class="headerMinisuper"> 1000 </p></div>
+</div>
+<div id="stockPicker">
+    <label>Select financial market for stocks</label>
+    <select id="markets" >
+        <option>Choose a stock exchange</option>
+        <option>NYSE: New York Stock Exchange(US)</option>
+        <option>Nasdaq(US)</option>
+        <option>Frankfurt Stock Exchange(Germany)</option>
+        <option>Oslo Stock Exchange(Norway)</option>
+        <option>Tokyo Stock Exchange(Japan)</option>
+    </select>
+    <select id="optionNAS">
+        <option>Apple</option>
+        <option>Microsoft</option>
+        <option>Amazon</option>
+    </select>
+    <select id="optionNYSE">
+        <option>Alibaba Group Holding</option>
+        <option>Berkshire Hathaway</option>
+        <option>J P Morgan Chase & Co</option>
+    </select>
+    <select id="optionFSE">
+        <option>SAP</option>
+        <option>Volkswagen</option>
+        <option>Siemens</option>
+    </select>
+    <select id="optionOSL">
+        <option>Equinor</option>
+        <option>DNB</option>
+        <option>Telenor</option>
+    </select>
+    <select id="optionTOK">
+        <option>Toyota Motor</option>
+        <option>Keyence</option>
+        <option>Sony Group</option>
+    </select>
 </div>
 <h1>Market Summary</h1>
 <div id="objectInfo">

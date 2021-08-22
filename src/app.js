@@ -1,4 +1,4 @@
-
+/*
 fetch("https://apidojo-yahoo-finance-v1.p.rapidapi.com/market/get-quotes?region=US&symbols=%5EIXIC%2C%5EGSPC%2C%5EDJI%2C%5EGDAXI%2COSEBN.OL%2C%5EN225", {
     "method": "GET",
     "headers": {
@@ -69,8 +69,67 @@ fetch("https://apidojo-yahoo-finance-v1.p.rapidapi.com/market/get-quotes?region=
         document.getElementById("nikkei").innerHTML= nikName;
         document.getElementById("nikkeichange").innerHTML=nikPercent+"%";
         document.getElementById("nikkeiprice").innerHTML=nikPrice;
-    })
+    })*/
+$(document).ready(function() {
+    $('#optionNAS').hide();
 
+    $('#markets').change(function () {
+        if ($('#markets option:selected').text() === "Nasdaq(US)"){
+            $('#optionNAS').show();
+        }
+        else {
+            $('#optionNAS').hide();
+        }
+    });
+});
+$(document).ready(function() {
+    $('#optionNYSE').hide();
+
+    $('#markets').change(function () {
+        if ($('#markets option:selected').text() === "NYSE: New York Stock Exchange(US)"){
+            $('#optionNYSE').show();
+        }
+        else {
+            $('#optionNYSE').hide();
+        }
+    });
+});
+$(document).ready(function() {
+    $('#optionFSE').hide();
+
+    $('#markets').change(function () {
+        if ($('#markets option:selected').text() === "Frankfurt Stock Exchange(Germany)"){
+            $('#optionFSE').show();
+        }
+        else {
+            $('#optionFSE').hide();
+        }
+    });
+});
+$(document).ready(function() {
+    $('#optionOSL').hide();
+
+    $('#markets').change(function () {
+        if ($('#markets option:selected').text() === "Oslo Stock Exchange(Norway)"){
+            $('#optionOSL').show();
+        }
+        else {
+            $('#optionOSL').hide();
+        }
+    });
+});
+$(document).ready(function() {
+    $('#optionTOK').hide();
+
+    $('#markets').change(function () {
+        if ($('#markets option:selected').text() === "Tokyo Stock Exchange(Japan)"){
+            $('#optionTOK').show();
+        }
+        else {
+            $('#optionTOK').hide();
+        }
+    });
+});
 /*fetch("https://apidojo-yahoo-finance-v1.p.rapidapi.com/market/get-quotes?region=US&symbols=%5EIXIC%2C%5EGSPC%2C%5EDJI%2C%5EGDAXI%2COSEBN.OL%2C%5EN225", {
     "method": "GET",
     "headers": {
