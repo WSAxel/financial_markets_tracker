@@ -151,66 +151,75 @@ function searchStock() {
         }
     } */
 
-
-    if ($('#optionTOK option:selected').text() === "Toyota Motor"){
-        console.log("KJØR1")
-        stockSymbol = "TM";
+    if ($('#markets option:selected').text() === "Tokyo Stock Exchange(Japan)") {
+        if ($('#optionTOK option:selected').text() === "Toyota Motor") {
+            console.log("KJØR1")
+            stockSymbol = "TM";
+        }
+        if ($('#optionTOK option:selected').text() === "Keyence") {
+            console.log("KJØR1")
+            stockSymbol = "KYCCF";
+        }
+        if ($('#optionTOK option:selected').text() === "Sony Group") {
+            console.log("KJØR1")
+            stockSymbol = "SONY";
+        }
     }
-    if ($('#optionTOK option:selected').text() === "Keyence"){
-        console.log("KJØR1")
-        stockSymbol = "KYCCF";
+    if ($('#markets option:selected').text() === "Oslo Stock Exchange(Norway)") {
+        if ($('#optionOSL option:selected').text() === "Equinor") {
+            console.log("KJØR1")
+            stockSymbol = "EQNR";
+        }
+        if ($('#optionOSL option:selected').text() === "DNB") {
+            console.log("KJØR1")
+            stockSymbol = "DNBBY";
+        }
+        if ($('#optionOSL option:selected').text() === "Telenor") {
+            console.log("KJØR1")
+            stockSymbol = "TELNF";
+        }
     }
-    if ($('#optionTOK option:selected').text() === "Sony Group"){
-        console.log("KJØR1")
-        stockSymbol = "SONY";
+    if ($('#markets option:selected').text() === "Frankfurt Stock Exchange(Germany)") {
+        if ($('#optionFSE option:selected').text() === "SAP") {
+            console.log("KJØR1")
+            stockSymbol = "SAP";
+        }
+        if ($('#optionFSE option:selected').text() === "Volkswagen") {
+            console.log("KJØR1")
+            stockSymbol = "VWAGY";
+        }
+        if ($('#optionFSE option:selected').text() === "Siemens") {
+            console.log("KJØR1")
+            stockSymbol = "SIEGY";
+        }
     }
-    if ($('#optionOSL option:selected').text() === "Equinor"){
-        console.log("KJØR1")
-        stockSymbol = "EQNR";
+    if ($('#markets option:selected').text() === "NYSE: New York Stock Exchange(US)") {
+        if ($('#optionNYSE option:selected').text() === "Alibaba Group Holding") {
+            console.log("KJØR1")
+            stockSymbol = "BABA";
+        }
+        if ($('#optionNYSE option:selected').text() === "Berkshire Hathaway") {
+            console.log("KJØR1")
+            stockSymbol = "BRK.B";
+        }
+        if ($('#optionNYSE option:selected').text() === "J P Morgan Chase & Co") {
+            console.log("KJØR1")
+            stockSymbol = "JPM";
+        }
     }
-    if ($('#optionOSL option:selected').text() === "DNB"){
-        console.log("KJØR1")
-        stockSymbol = "DNBBY";
-    }
-    if ($('#optionOSL option:selected').text() === "Telenor"){
-        console.log("KJØR1")
-        stockSymbol = "TELNF";
-    }
-    if ($('#optionFSE option:selected').text() === "SAP"){
-        console.log("KJØR1")
-        stockSymbol = "SAP";
-    }
-    if ($('#optionFSE option:selected').text() === "Volkswagen"){
-        console.log("KJØR1")
-        stockSymbol = "VWAGY";
-    }
-    if ($('#optionFSE option:selected').text() === "Siemens"){
-        console.log("KJØR1")
-        stockSymbol = "SIEGY";
-    }
-    if ($('#optionNYSE option:selected').text() === "Alibaba Group Holding"){
-        console.log("KJØR1")
-        stockSymbol = "BABA";
-    }
-    if ($('#optionNYSE option:selected').text() === "Berkshire Hathaway"){
-        console.log("KJØR1")
-        stockSymbol = "BRK.B";
-    }
-    if ($('#optionNYSE option:selected').text() === "J P Morgan Chase & Co"){
-        console.log("KJØR1")
-        stockSymbol = "JPM";
-    }
-    if ($('#optionNAS option:selected').text() === "Apple"){
-        console.log("KJØR1")
-        stockSymbol = "AAPL";
-    }
-    if ($('#optionNAS option:selected').text() === "Microsoft"){
-        console.log("KJØR1")
-        stockSymbol = "MSFT";
-    }
-    if ($('#optionNAS option:selected').text() === "Amazon"){
-        console.log("KJØR1")
-        stockSymbol = "AMZN";
+    if ($('#markets option:selected').text() === "Nasdaq(US)") {
+        if ($('#optionNAS option:selected').text() === "Apple") {
+            console.log("KJØR1")
+            stockSymbol = "AAPL";
+        }
+        if ($('#optionNAS option:selected').text() === "Microsoft") {
+            console.log("KJØR1")
+            stockSymbol = "MSFT";
+        }
+        if ($('#optionNAS option:selected').text() === "Amazon") {
+            console.log("KJØR1")
+            stockSymbol = "AMZN";
+        }
     }
     console.log(stockSymbol);
     fetch("https://apidojo-yahoo-finance-v1.p.rapidapi.com/stock/v2/get-financials?symbol="+stockSymbol+"&region=US", {
