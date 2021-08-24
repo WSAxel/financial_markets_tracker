@@ -1,4 +1,4 @@
-/*
+
 fetch("https://apidojo-yahoo-finance-v1.p.rapidapi.com/market/get-quotes?region=US&symbols=%5EIXIC%2C%5EGSPC%2C%5EDJI%2C%5EGDAXI%2COSEBN.OL%2C%5EN225", {
     "method": "GET",
     "headers": {
@@ -69,7 +69,7 @@ fetch("https://apidojo-yahoo-finance-v1.p.rapidapi.com/market/get-quotes?region=
         document.getElementById("nikkei").innerHTML= nikName;
         document.getElementById("nikkeichange").innerHTML=nikPercent+"%";
         document.getElementById("nikkeiprice").innerHTML=nikPrice;
-    })*/
+    })
 $(document).ready(function() {
     $('#optionNAS').hide();
 
@@ -133,23 +133,7 @@ $(document).ready(function() {
 function searchStock() {
     console.log("Funktion kjører");
     let stockSymbol;
-    /*if ($('#markets option:selected').text() === "Nasdaq(US)"){
-        stockSymbol="AAPL"
-    } Fungerer! */
-    /*if ($('#optionNAS option:selected').text() === "Apple"){
-        stockSymbol="AAPL"
-    } */
-    /*if (document.getElementsByTagName("option")[0].text === "Apple"){
-        console.log("KJØR1");
-        stockSymbol= "AAPL";
-    } */
-    /*if ($('#markets option:selected').text() === "Nasdaq(US)"){
-        console.log("KJØR1")
-        if ($('#optionNAS option:selected').text === "Apple"){
-            console.log("KJØR2")
-            stockSymbol = "AAPL"
-        }
-    } */
+
 
     if ($('#markets option:selected').text() === "Tokyo Stock Exchange(Japan)") {
         if ($('#optionTOK option:selected').text() === "Toyota Motor") {
@@ -232,8 +216,36 @@ function searchStock() {
         .then(response => response.json())
         .then(data => {
             console.log(data);
+            let shortName = data['price']['shortName'];
+            let stockPrice = data['price']['regularMarketPrice']['fmt'];
+            let stockPercentMove = data['price']['regularMarketChangePercent']['fmt'];
+            let pe = data['summaryDetail']['trailingPE']['fmt'];
+            let forwardPE = data['summaryDetail']['forwardPE']['fmt'];
+            let Yield = data['summaryDetail']['dividendYield']['fmt'];
+            let weekLow = data['summaryDetail']['fiftyTwoWeekLow']['fmt'];
+            let dividendDate = data['summaryDetail']['exDividendDate']['fmt'];
+            let dividens = data['summaryDetail']['dividendRate']['fmt'];
+            let marketCap =data['summaryDetail']['marketCap']['fmt'];
+            let volume = data['summaryDetail']['averageVolume']['longFmt'];
+            document.getElementById("stockName").innerHTML=shortName;
+            document.getElementById("stockPrice").innerHTML=stockPrice;
+            if (stockPercentMove <= 0){document.getElementById("stockPercentageMove").classList.add("negative")}
+            else {document.getElementById("stockPercentageMove").classList.add("positive")}
+            document.getElementById("stockPercentageMove").innerHTML=stockPercentMove;
+            document.getElementById("p/e").innerHTML="P/E Ratio: "+pe;
+            document.getElementById("p/e*").innerHTML="Forward P/E Ratio: "+forwardPE;
+            document.getElementById("yield").innerHTML="Yield: "+Yield;
+            document.getElementById("52weekLow").innerHTML="52 week low: "+weekLow;
+            document.getElementById("dividendDate").innerHTML="Ex-Dividend Date: "+dividendDate;
+            document.getElementById("dividend").innerHTML="Dividends: "+dividens;
+            document.getElementById("marketCap").innerHTML="Market Cap: "+marketCap;
+            document.getElementById("volume").innerHTML="Volume: "+volume;
         })
 }
+
+
+
+
 /*fetch("https://apidojo-yahoo-finance-v1.p.rapidapi.com/market/get-quotes?region=US&symbols=%5EIXIC%2C%5EGSPC%2C%5EDJI%2C%5EGDAXI%2COSEBN.OL%2C%5EN225", {
     "method": "GET",
     "headers": {

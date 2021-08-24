@@ -15,8 +15,7 @@
 .headerMini{
     float: left;
     padding-right: 50px;
-    border-width: 1px;
-    border-style: solid;
+
 }
 .headermain{
     margin-bottom: -10px;
@@ -46,5 +45,8 @@
 }
 #stockPicker{
     margin-top: 50px;
+}
+#companyInfo{
+    margin-bottom: 150px;
 }
 
