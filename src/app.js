@@ -1,4 +1,4 @@
-
+/*
 fetch("https://apidojo-yahoo-finance-v1.p.rapidapi.com/market/get-quotes?region=US&symbols=%5EIXIC%2C%5EGSPC%2C%5EDJI%2C%5EGDAXI%2COSEBN.OL%2C%5EN225", {
     "method": "GET",
     "headers": {
@@ -69,7 +69,7 @@ fetch("https://apidojo-yahoo-finance-v1.p.rapidapi.com/market/get-quotes?region=
         document.getElementById("nikkei").innerHTML= nikName;
         document.getElementById("nikkeichange").innerHTML=nikPercent+"%";
         document.getElementById("nikkeiprice").innerHTML=nikPrice;
-    })
+    }) */
 $(document).ready(function() {
     $('#optionNAS').hide();
 
