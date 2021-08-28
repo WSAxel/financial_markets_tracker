@@ -1,3 +1,6 @@
+.form-control:hover{
+    background-color: lawngreen;
+}
 .parent {
     background: mediumpurple;
     padding: 1rem;
@@ -31,7 +34,7 @@
 }
 .header{
     padding-bottom: 5%;
-    background-color: rgba(30, 93, 197, 0.86);
+    background-color: rgba(124, 167, 238, 0.86);
 }
 #logo{
     width: 50px;
@@ -48,5 +51,8 @@
 }
 #companyInfo{
     margin-bottom: 150px;
-}
+}#myChart{
+    width: 800px !important;
+    height: 600px !important;
+ }
 

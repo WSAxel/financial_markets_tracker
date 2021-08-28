@@ -1,8 +1,8 @@
-/*
+
 fetch("https://apidojo-yahoo-finance-v1.p.rapidapi.com/market/get-quotes?region=US&symbols=%5EIXIC%2C%5EGSPC%2C%5EDJI%2C%5EGDAXI%2COSEBN.OL%2C%5EN225", {
     "method": "GET",
     "headers": {
-        "x-rapidapi-key": "038fbcf8a8msh4138d84dbdf5692p17be95jsnb9214089f04a",
+        "x-rapidapi-key": "6b8dd5f88dmsh978e17e8f222837p102184jsn877d9344ca0e",
         "x-rapidapi-host": "apidojo-yahoo-finance-v1.p.rapidapi.com"
     }
 })
@@ -69,7 +69,7 @@ fetch("https://apidojo-yahoo-finance-v1.p.rapidapi.com/market/get-quotes?region=
         document.getElementById("nikkei").innerHTML= nikName;
         document.getElementById("nikkeichange").innerHTML=nikPercent+"%";
         document.getElementById("nikkeiprice").innerHTML=nikPrice;
-    }) */
+    })
 $(document).ready(function() {
     $('#optionNAS').hide();
 
@@ -130,6 +130,8 @@ $(document).ready(function() {
         }
     });
 });
+let revenues = [];
+let revenueDates = [];
 function searchStock() {
     console.log("Funktion kjører");
     let stockSymbol;
@@ -182,10 +184,6 @@ function searchStock() {
             console.log("KJØR1")
             stockSymbol = "BABA";
         }
-        if ($('#optionNYSE option:selected').text() === "Berkshire Hathaway") {
-            console.log("KJØR1")
-            stockSymbol = "BRK.B";
-        }
         if ($('#optionNYSE option:selected').text() === "J P Morgan Chase & Co") {
             console.log("KJØR1")
             stockSymbol = "JPM";
@@ -210,7 +208,7 @@ function searchStock() {
         "method": "GET",
         "headers": {
             "x-rapidapi-host": "apidojo-yahoo-finance-v1.p.rapidapi.com",
-            "x-rapidapi-key": "038fbcf8a8msh4138d84dbdf5692p17be95jsnb9214089f04a"
+            "x-rapidapi-key": "6b8dd5f88dmsh978e17e8f222837p102184jsn877d9344ca0e"
         }
     })
         .then(response => response.json())
@@ -218,8 +216,20 @@ function searchStock() {
             console.log(data);
             let shortName = data['price']['shortName'];
             let stockPrice = data['price']['regularMarketPrice']['fmt'];
-            let stockPercentMove = data['price']['regularMarketChangePercent']['fmt'];
-            let pe = data['summaryDetail']['trailingPE']['fmt'];
+            let stockPercentMove;
+            try{
+               stockPercentMove = data['price']['regularMarketChangePercent']['fmt']
+            }
+            catch (error){
+                stockPercentMove = "";
+            }
+            let pe;
+            try {
+                pe = data['summaryDetail']['trailingPE']['fmt']
+            }
+            catch (error){
+                pe = "No information found"
+            }
             let forwardPE = data['summaryDetail']['forwardPE']['fmt'];
             let Yield = data['summaryDetail']['dividendYield']['fmt'];
             let weekLow = data['summaryDetail']['fiftyTwoWeekLow']['fmt'];
@@ -227,6 +237,16 @@ function searchStock() {
             let dividens = data['summaryDetail']['dividendRate']['fmt'];
             let marketCap =data['summaryDetail']['marketCap']['fmt'];
             let volume = data['summaryDetail']['averageVolume']['longFmt'];
+            let revenue0=data['timeSeries']['annualTotalRevenue']['0']['reportedValue']['raw'];
+            let revenue1=data['timeSeries']['annualTotalRevenue']['1']['reportedValue']['raw'];
+            let revenue2=data['timeSeries']['annualTotalRevenue']['2']['reportedValue']['raw'];
+            let revenue3=data['timeSeries']['annualTotalRevenue']['3']['reportedValue']['raw'];
+            let revenueDate0=data['timeSeries']['annualTotalRevenue']['0']['asOfDate'];
+            let revenueDate1=data['timeSeries']['annualTotalRevenue']['1']['asOfDate'];
+            let revenueDate2=data['timeSeries']['annualTotalRevenue']['2']['asOfDate'];
+            let revenueDate3=data['timeSeries']['annualTotalRevenue']['3']['asOfDate'];
+            revenues.push(revenue0,revenue1,revenue2,revenue3);
+            revenueDates.push(revenueDate0,revenueDate1,revenueDate2,revenueDate3);
             document.getElementById("stockName").innerHTML=shortName;
             document.getElementById("stockPrice").innerHTML=stockPrice;
             if (stockPercentMove <= 0){document.getElementById("stockPercentageMove").classList.add("negative")}
@@ -240,12 +260,41 @@ function searchStock() {
             document.getElementById("dividend").innerHTML="Dividends: "+dividens;
             document.getElementById("marketCap").innerHTML="Market Cap: "+marketCap;
             document.getElementById("volume").innerHTML="Volume: "+volume;
+            runChart();
         })
 }
-
-
-
-
+function runChart() {
+    var ctx = document.getElementById('myChart').getContext('2d');
+    var myChart = new Chart(ctx, {
+        type: 'bar',
+        data: {
+            labels: revenueDates,
+            datasets: [{
+                label: 'Revenue last 4 years in billions(some are in USD others in native currency)',
+                data: revenues,
+                backgroundColor: [
+                    'rgba(255, 99, 132, 0.2)'
+                ],
+                borderColor: [
+                    'rgba(255, 99, 132, 1)'
+                ],
+                borderWidth: 1
+            }]
+        },
+        options: {
+            scales: {
+                y: {
+                    beginAtZero: true
+                }
+            }
+        }
+    });
+    clearArrays();
+}
+function clearArrays(){
+    revenues = [];
+    revenueDates = [];
+}
 /*fetch("https://apidojo-yahoo-finance-v1.p.rapidapi.com/market/get-quotes?region=US&symbols=%5EIXIC%2C%5EGSPC%2C%5EDJI%2C%5EGDAXI%2COSEBN.OL%2C%5EN225", {
     "method": "GET",
     "headers": {

@@ -5,6 +5,7 @@
     <title>Title</title>
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
     <script src=" https://ajax.googleapis.com/ajax/libs/jquery/1.5.2/jquery.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js@3.5.1/dist/chart.min.js"></script>
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
@@ -33,7 +34,6 @@
     </select>
     <select id="optionNYSE" class="form-control" style="width: 20%; float: left" >
         <option>Alibaba Group Holding</option>
-        <option>Berkshire Hathaway</option>
         <option>J P Morgan Chase & Co</option>
     </select>
     <select id="optionFSE" class="form-control" style="width: 20%; float: left" >
@@ -55,7 +55,8 @@
         <path d="M11.742 10.344a6.5 6.5 0 1 0-1.397 1.398h-.001c.03.04.062.078.098.115l3.85 3.85a1 1 0 0 0 1.415-1.414l-3.85-3.85a1.007 1.007 0 0 0-.115-.1zM12 6.5a5.5 5.5 0 1 1-11 0 5.5 5.5 0 0 1 11 0z"/>
     </svg></button>
 </div>
-<p>All stocks listed on this page are valued in US dollars, not all stocks may have a forward p/e ratio</p>
+<p>Most stocks listed on this page are valued in US dollars, not all stocks may have all data needed. <br> If no data shows up it means
+that the API calls for this month is used up</p>
 <div id="companyInfo">
     <div style="margin-left: 30px">
     <h1 id="stockName"></h1>
@@ -74,7 +75,12 @@
         <p id="marketCap" style="margin-right: 55%; border-bottom: 4px solid blue">Market Cap</p>
         <p id="volume" style="margin-right: 55%; border-bottom: 4px solid blue">Volume</p>
     </div>
+    <div style="position: relative; bottom: 180px; left: 700px">
+        <p>After a stock is picked the page must be reset in order to make the chart show another stock you pick</p>
+    <canvas id="myChart"></canvas>
+    </div>
 </div>
+
 <!--
 <h2>Market Summary</h2>
 <div id="objectInfo">
